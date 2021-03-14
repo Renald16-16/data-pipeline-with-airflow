@@ -1,0 +1,55 @@
+from airflow.hooks.postgres_hook import PostgresHook
+from airflow.models import BaseOperator
+from airflow.utils.decorators import apply_defaults
+import logging
+
+class LoadFactOperator(BaseOperator):
+    '''
+    Operator to load fact table.
+    '''
+    ui_color = '#F98866'
+
+    @apply_defaults
+    def __init__(self,
+                 table='',
+                 redshift_conn_id='',
+                 sql_transform_command='',
+                 truncate=False,
+                 *args, **kwargs):
+    '''
+        Arg(s):
+            table: which table to load to           
+            redshift_conn_id: redshift connection id (string)
+            sql_transform_command: SQL command to transform the original data
+            truncate: truncate table before loading or not
+        '''
+        super(LoadFactOperator, self).__init__(*args, **kwargs)
+        
+        self.table=table
+        self.redshift_conn_id=redshift_conn_id
+        self.sql_transform_command=sql_transform_command
+        self.truncate=truncate
+
+    def execute(self, context):
+        '''
+        connects to redshift, truncates the fact tables, then loads the new data to facts table 
+        '''
+        redshift_hook=PostgresHook(postgres_conn_id=self.redshift_conn_id)
+        logging.info(f"truncating table {self.table}")
+        redshift_hook.run=('''
+        BEGIN;
+        TRUNCATE TABLE {};
+        COMMIT;
+        ''').format(self.table)
+        logging.info("Truncating complete")
+        
+        sql_command=('''
+        BEGIN;
+        INSERT INTO {} {}
+        {};
+        COMMIT;
+        ''').format(self.table,self.sql_transform_command)
+        
+        logging.info(f"Loading fact table {self.table}")
+        redshift.run(sql_command)
+        logging.info("Load success")
