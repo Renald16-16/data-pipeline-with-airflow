@@ -1,0 +1,279 @@
+root@bc3f5f0455bc:/home/workspace# /opt/airflow/start.sh
+[2021-03-15 07:40:03,247] {settings.py:174} INFO - settings.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800, pid=173
+[2021-03-15 07:40:15,819] {plugins_manager.py:149} ERROR - name 'self' is not defined
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.6/site-packages/airflow/plugins_manager.py", line 143, in <module>
+    m = imp.load_source(namespace, filepath)
+  File "/opt/conda/lib/python3.6/imp.py", line 172, in load_source
+    module = _load(spec)
+  File "<frozen importlib._bootstrap>", line 684, in _load
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/workspace/airflow/plugins/__init__.py", line 5, in <module>
+    import operators
+  File "/home/workspace/airflow/plugins/operators/__init__.py", line 3, in <module>
+    from operators.load_dimension import LoadDimensionOperator
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 6, in <module>
+    class LoadDimensionOperator(BaseOperator):
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 53, in LoadDimensionOperator
+    logging.info(f'Loading dim table: {self.table} ...')
+NameError: name 'self' is not defined
+[2021-03-15 07:40:15,846] {plugins_manager.py:150} ERROR - Failed to import plugin /home/workspace/airflow/plugins/__init__.py
+[2021-03-15 07:40:15,850] {plugins_manager.py:149} ERROR - name 'self' is not defined
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.6/site-packages/airflow/plugins_manager.py", line 143, in <module>
+    m = imp.load_source(namespace, filepath)
+  File "/opt/conda/lib/python3.6/imp.py", line 172, in load_source
+    module = _load(spec)
+  File "<frozen importlib._bootstrap>", line 684, in _load
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 6, in <module>
+    class LoadDimensionOperator(BaseOperator):
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 53, in LoadDimensionOperator
+    logging.info(f'Loading dim table: {self.table} ...')
+NameError: name 'self' is not defined
+[2021-03-15 07:40:15,858] {plugins_manager.py:150} ERROR - Failed to import plugin /home/workspace/airflow/plugins/operators/load_dimension.py
+[2021-03-15 07:40:15,861] {plugins_manager.py:149} ERROR - name 'self' is not defined
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.6/site-packages/airflow/plugins_manager.py", line 143, in <module>
+    m = imp.load_source(namespace, filepath)
+  File "/opt/conda/lib/python3.6/imp.py", line 172, in load_source
+    module = _load(spec)
+  File "<frozen importlib._bootstrap>", line 684, in _load
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/workspace/airflow/plugins/operators/__init__.py", line 3, in <module>
+    from operators.load_dimension import LoadDimensionOperator
+  File "/home/workspace/airflow/plugins/operators/__init__.py", line 3, in <module>
+    from operators.load_dimension import LoadDimensionOperator
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 6, in <module>
+    class LoadDimensionOperator(BaseOperator):
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 53, in LoadDimensionOperator
+    logging.info(f'Loading dim table: {self.table} ...')
+NameError: name 'self' is not defined
+[2021-03-15 07:40:15,868] {plugins_manager.py:150} ERROR - Failed to import plugin /home/workspace/airflow/plugins/operators/__init__.py
+[2021-03-15 07:40:17,267] {__init__.py:51} INFO - Using executor LocalExecutor
+[2021-03-15 07:40:21,790] {cli_action_loggers.py:69} ERROR - Failed on pre-execution callback using <function default_action_log at 0x7f21c7697e18>
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 2228, in _wrap_pool_connect
+    return fn()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 434, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 831, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 563, in checkout
+    rec = pool._do_get()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 1259, in _do_get
+    self._dec_overflow()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 67, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 277, in reraise
+    raise value
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 1256, in _do_get
+    return self._create_connection()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 379, in _create_connection
+    return _ConnectionRecord(self)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 508, in __init__
+    self.__connect(first_connect_check=True)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 710, in __connect
+    connection = pool._invoke_creator(self)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/engine/strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 437, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/opt/conda/lib/python3.6/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  the database system is starting up
+FATAL:  the database system is starting up
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.6/site-packages/airflow/utils/cli_action_loggers.py", line 67, in on_pre_execution
+    cb(**kwargs)
+  File "/opt/conda/lib/python3.6/site-packages/airflow/utils/cli_action_loggers.py", line 98, in default_action_log
+    session.add(log)
+  File "/opt/conda/lib/python3.6/contextlib.py", line 88, in __exit__
+    next(self.gen)
+  File "/opt/conda/lib/python3.6/site-packages/airflow/utils/db.py", line 44, in create_session
+    session.commit()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1023, in commit
+    self.transaction.commit()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 487, in commit
+    self._prepare_impl()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 466, in _prepare_impl
+    self.session.flush()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2446, in flush
+    self._flush(objects)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2584, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 67, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 277, in reraise
+    raise value
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2544, in _flush
+    flush_context.execute()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 416, in execute
+    rec.execute(self)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 583, in execute
+    uow,
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 213, in save_obj
+    ) in _organize_states_for_save(base_mapper, states, uowtransaction):
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 374, in _organize_states_for_save
+    base_mapper, uowtransaction, states
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 1558, in _connections_for_states
+    connection = uowtransaction.transaction.connection(base_mapper)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 306, in connection
+    return self._connection_for_bind(bind, execution_options)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 412, in _connection_for_bind
+    conn = self._parent._connection_for_bind(bind, execution_options)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 424, in _connection_for_bind
+    conn = bind.contextual_connect()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 2192, in contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 2232, in _wrap_pool_connect
+    e, dialect, self
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1528, in _handle_dbapi_exception_noconnection
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 296, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 276, in reraise
+    raise value.with_traceback(tb)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 2228, in _wrap_pool_connect
+    return fn()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 434, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 831, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 563, in checkout
+    rec = pool._do_get()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 1259, in _do_get
+    self._dec_overflow()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 67, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 277, in reraise
+    raise value
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 1256, in _do_get
+    return self._create_connection()
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 379, in _create_connection
+    return _ConnectionRecord(self)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 508, in __init__
+    self.__connect(first_connect_check=True)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/pool.py", line 710, in __connect
+    connection = pool._invoke_creator(self)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/engine/strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/opt/conda/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 437, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/opt/conda/lib/python3.6/site-packages/psycopg2/__init__.py", line 130, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) FATAL:  the database system is starting up
+FATAL:  the database system is starting up
+ (Background on this error at: http://sqlalche.me/e/e3q8)
+  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+ 
+[2021-03-15 07:40:24,686] {settings.py:174} INFO - settings.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800, pid=189
+[2021-03-15 07:40:30,321] {plugins_manager.py:149} ERROR - name 'self' is not defined
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.6/site-packages/airflow/plugins_manager.py", line 143, in <module>
+    m = imp.load_source(namespace, filepath)
+  File "/opt/conda/lib/python3.6/imp.py", line 172, in load_source
+    module = _load(spec)
+  File "<frozen importlib._bootstrap>", line 684, in _load
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/workspace/airflow/plugins/__init__.py", line 5, in <module>
+    import operators
+  File "/home/workspace/airflow/plugins/operators/__init__.py", line 3, in <module>
+    from operators.load_dimension import LoadDimensionOperator
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 6, in <module>
+    class LoadDimensionOperator(BaseOperator):
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 53, in LoadDimensionOperator
+    logging.info(f'Loading dim table: {self.table} ...')
+NameError: name 'self' is not defined
+[2021-03-15 07:40:30,349] {plugins_manager.py:150} ERROR - Failed to import plugin /home/workspace/airflow/plugins/__init__.py
+[2021-03-15 07:40:30,354] {plugins_manager.py:149} ERROR - name 'self' is not defined
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.6/site-packages/airflow/plugins_manager.py", line 143, in <module>
+    m = imp.load_source(namespace, filepath)
+  File "/opt/conda/lib/python3.6/imp.py", line 172, in load_source
+    module = _load(spec)
+  File "<frozen importlib._bootstrap>", line 684, in _load
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 6, in <module>
+    class LoadDimensionOperator(BaseOperator):
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 53, in LoadDimensionOperator
+    logging.info(f'Loading dim table: {self.table} ...')
+NameError: name 'self' is not defined
+[2021-03-15 07:40:30,363] {plugins_manager.py:150} ERROR - Failed to import plugin /home/workspace/airflow/plugins/operators/load_dimension.py
+[2021-03-15 07:40:30,382] {plugins_manager.py:149} ERROR - name 'self' is not defined
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.6/site-packages/airflow/plugins_manager.py", line 143, in <module>
+    m = imp.load_source(namespace, filepath)
+  File "/opt/conda/lib/python3.6/imp.py", line 172, in load_source
+    module = _load(spec)
+  File "<frozen importlib._bootstrap>", line 684, in _load
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/workspace/airflow/plugins/operators/__init__.py", line 3, in <module>
+    from operators.load_dimension import LoadDimensionOperator
+  File "/home/workspace/airflow/plugins/operators/__init__.py", line 3, in <module>
+    from operators.load_dimension import LoadDimensionOperator
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 6, in <module>
+    class LoadDimensionOperator(BaseOperator):
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 53, in LoadDimensionOperator
+    logging.info(f'Loading dim table: {self.table} ...')
+NameError: name 'self' is not defined
+[2021-03-15 07:40:30,393] {plugins_manager.py:150} ERROR - Failed to import plugin /home/workspace/airflow/plugins/operators/__init__.py
+[2021-03-15 07:40:30,613] {__init__.py:51} INFO - Using executor LocalExecutor
+  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+ 
+[2021-03-15 07:40:35,077] {models.py:273} INFO - Filling up the DagBag from /home/workspace/airflow/dags
+[2021-03-15 07:40:35,114] {models.py:377} ERROR - Failed to import: /home/workspace/airflow/dags/dag.py
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.6/site-packages/airflow/models.py", line 374, in process_file
+    m = imp.load_source(mod_name, filepath)
+  File "/opt/conda/lib/python3.6/imp.py", line 172, in load_source
+    module = _load(spec)
+  File "<frozen importlib._bootstrap>", line 684, in _load
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/workspace/airflow/dags/dag.py", line 5, in <module>
+    from operators import (StageToRedshiftOperator, LoadFactOperator,
+  File "/home/workspace/airflow/plugins/operators/__init__.py", line 3, in <module>
+    from operators.load_dimension import LoadDimensionOperator
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 6, in <module>
+    class LoadDimensionOperator(BaseOperator):
+  File "/home/workspace/airflow/plugins/operators/load_dimension.py", line 53, in LoadDimensionOperator
+    logging.info(f'Loading dim table: {self.table} ...')
+NameError: name 'self' is not defined
+Running the Gunicorn Server with:
+Workers: 4 sync
+Host: 0.0.0.0:3000
+Timeout: 120
+Logfiles: - -
+=================================================================            
+Waiting for Airflow web server...
+Airflow web server is ready
+root@bc3f5f0455bc:/home/workspace# w
+ 07:41:16 up 4 min,  0 users,  load average: 4.61, 1.99, 0.79
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+root@bc3f5f0455bc:/home/workspace# 
